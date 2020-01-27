@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+
+<title>Sistema de Escaneo</title>
+
+<!-- Bootstrap core CSS -->
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+<script src="https://kit.fontawesome.com/f36d433414.js"
+	crossorigin="anonymous"></script>
+
+<!-- Custom styles for this template -->
+
+<link href="#" th:href="@{/css/style.css}" rel="stylesheet" />
+
+
+</head>
+
+<body>
+	<div id="wrapper">
+
+		<!-- Sidebar -->
+		<div id="sidebar-wrapper">
+			<ul class="sidebar-nav">
+				<li class="sidebar-brand"><a href="#"> Start Bootstrap </a></li>
+				<li><a href="#">Dashboard</a></li>
+				<li><a href="#">Agregar Documentos</a></li>
+				<li><a href="#">Inicio</a></li>
+				<li><a href="#">Events</a></li>
+				<li><a href="#">About</a></li>
+				<li><a href="#">Contacts</a></li>
+
+			</ul>
+		</div>
+		<!-- /#sidebar-wrapper -->
+
+		<div id="page-content-wrapper" class="container">
+			<h1>Bienvenido</h1>
+			<br />
+			<div class="row">
+				<div class="col-md-4">
+					<select name="transporte" class="custom-select">
+						<option value="1">CODIGO</option>
+						<option value="2">SOLICITANTE</option>
+						<option value="3">PROVEEDOR</option>
+						<option value="4">TEMA</option>
+						<option value="5">FECHA</option>
+						<option value="6">MONTO</option>
+					</select>
+				</div >
+				
+				<div class="col-md-4">
+					<select name="transporte" class="custom-select">
+						<option>PRESTACION DE SERVICIOS</option>
+						<option>COMPRA DE BIENES</option>
+					</select>
+				</div >
+				
+				<div class="col-md-4">
+					<form class="form-inline">
+						<input class="form-control" type="search" placeholder="Buscar"
+							aria-label="Buscar">
+						<button class="btn btn-success" type="submit">Buscar</button>
+					</form>
+				</div>
+
+			</div>
+
+			<br />
+
+			<div class="panel panel-default">
+				<div class="panel-heading"></div>
+
+
+				<table class="table table-striped table-bordered">
+					<thead class="thead inverse">
+						<tr>
+							<th>Codigo</th>
+							<th>Tipo</th>
+							<th>Anaquel</th>
+							<th>Columna</th>
+							<th>Solicitante</th>
+							<th>Proveedor</th>
+							<th>Tema</th>
+							<th>Monto</th>
+							<th>Fecha</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="document: ${documents}">
+							<td th:text="${document.codigoDoc}"></td>
+							<td th:text="${document.tipo}"></td>
+							<td th:text="${document.anaquel}"></td>
+							<td th:text="${document.columna}"></td>
+							<td th:text="${document.solicitante}"></td>
+							<td th:text="${document.proveedor}"></td>
+							<td th:text="${document.tema}"></td>
+							<td th:text="${document.monto}"></td>
+							<td th:text="${document.fecha}"></td>
+
+							<td>
+								<button type="button" class="btn btn-dark">
+									<span class="fas fa-images" aria-hidden="true"></span>
+								</button> <a href="#"
+								th:href="@{/documents/documentform?id=__${document.id}__}">
+									<button type="button" class="btn btn-dark">
+										<span class="fas fa-edit" aria-hidden="true"></span>
+									</button>
+							</a> <a href="#"
+								th:href="@{/documents/removedocument?id=__${document.id}__}">
+									<button type="button" class="btn btn-danger">
+										<span class="fas fa-trash-alt" aria-hidden="true"></span>
+									</button>
+							</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<div th:if="${result == 1}" class="alert alert-success" role="alert">Añadido
+				correctamente!</div>
+			<div th:if="${result == 0}" class="alert alert-danger" role="alert">Error
+				al añadir documento</div>
+
+			<a href="#" th:href="@{/documents/documentform?id=0}">
+				<button class="btn btn-lg btn-info btn-block" type="submit">
+					<span class="far fa-file-alt" aria-hidden="true"></span> Añadir
+					Documento
+				</button>
+			</a> <a href="#" th:href="@{/login?logout}">
+				<button class="btn btn-lg btn-info btn-block" type="submit">
+					<span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>Cerrar
+					Sesión
+				</button>
+			</a>
+
+		</div>
+
+
+	</div>
+</body>
+</html>

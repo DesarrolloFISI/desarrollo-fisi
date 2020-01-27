@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Añadir / Modificar documento</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://kit.fontawesome.com/f36d433414.js"
+	crossorigin="anonymous"></script>
+	
+<link href="#" th:href="@{/css/style.css}" rel="stylesheet" />
+</head>
+<body>
+
+	<div class="jumbotron">
+		<div class="container">
+			<h1>Formulario</h1>
+			<br />
+			<form action="#" th:action="@{/documents/adddocument}" th:object="${documentModel}" method="post">
+			<input type="hidden" th:field="*{id}"></input>
+				Codigo: <input type="text" class="form-control" th:field="*{codigoDoc}" th:value="${codigoDoc}"></input> <br/>
+				Tipo: <input type="text" class="form-control" th:field="*{tipo}" th:value="${tipo}"></input> <br/>
+				Anaquel: <input type="text" class="form-control" th:field="*{anaquel}" th:value="${anaquel}"></input> <br/>
+				Columna: <input type="text" class="form-control" th:field="*{columna}" th:value="${columna}"></input> <br/>
+				Solicitante: <input type="text" class="form-control" th:field="*{solicitante}" th:value="${solicitante}"></input> <br/> <br/>
+				Proveedor: <input type="text" class="form-control" th:field="*{proveedor}" th:value="${proveedor}"></input> <br/> <br/>
+				Tema: <input type="text" class="form-control" th:field="*{tema}" th:value="${tema}"></input> <br/> <br/>
+				Monto: <input type="text" class="form-control" th:field="*{monto}" th:value="${monto}"></input> <br/> <br/>
+				Fecha: <input type="text" class="form-control" th:field="*{fecha}" th:value="${fecha}"></input> <br/> <br/>
+				Añadir imagenes <input type="file" name="file" class="form-control" multiple="multiple"/>
+				<button class="btn btn-lg btn-primary btn-block" type="submit">
+					<span class="fas fa-check" aria-hidden="true"></span>
+					Aceptar
+				</button>
+			</form>
+
+			<a href="#" th:href="@{/documents/cancel}">
+				<button class="btn btn-lg btn-primary btn-block" type="submit">
+					<span class="fas fa-times" aria-hidden="true"></span>
+					Cancelar
+				</button>
+			</a>
+		</div>
+	</div>
+
+</body>
+</html>
